@@ -14,8 +14,8 @@ export class CourseListComponent implements OnInit {
     this.courses = [
       {
         id: 1,
-        name: 'Learning angular',
-        imageUrl: 'https://github.com/theluanz.png',
+        name: 'Angular Forms',
+        imageUrl: '/assets/images/forms.png',
         price: 22.5,
         code: 'THZ-313',
         duration: 120,
@@ -24,12 +24,12 @@ export class CourseListComponent implements OnInit {
       },
       {
         id: 2,
-        name: 'Angular Advanced ',
-        imageUrl: 'https://github.com/theluanz.png',
+        name: 'Angular CLI ',
+        imageUrl: '/assets/images/cli.png',
         price: 32.5,
         code: 'THZ-237',
         duration: 50,
-        rating: 4,
+        rating: 3,
         relaseDate: 'February, 20, 2022',
       },
     ];

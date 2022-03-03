@@ -21,22 +21,25 @@ export class CourseInfoComponent implements OnInit {
   }
 
   saveChanges() {
-    this.courseService.saveCourse(this.course);
-    this.router.navigateByUrl('404');
+    this.courseService.saveCourse(this.course).subscribe({
+      next: () => this.router.navigateByUrl('/'),
+    });
   }
 
   ngOnInit(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id')!;
-
-    if (!Number.isNaN(id)) {
-      console.log('entrou');
-      const getCourse: Course = this.courseService.retrieveById(id!);
-      if (getCourse.id > -1) {
-      }
-      getCourse.id !== -1 ? (this.course = getCourse) : this.error404();
-      console.log(this.course);
-    } else {
-      this.error404();
-    }
+    this.courseService.retrieveById(id).subscribe({
+      next: (course) => {
+        if (course) {
+          this.course = course;
+        } else {
+          this.error404();
+        }
+      },
+      error: (error) => {
+        console.log('erro: ' + error);
+        this.error404();
+      },
+    });
   }
 }

@@ -5,10 +5,29 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CourseService {
+  courseNotFound: Course = {
+    id: -1,
+    name: 'Não existe',
+    releaseDate: '',
+    description: '',
+    duration: 0,
+    code: '',
+    rating: 0,
+    price: 0,
+    imageUrl: '',
+  };
   constructor() {}
 
   retriveAll(): Course[] {
     return COURSES;
+  }
+
+  retriveById(id: number): Course {
+    const course = COURSES.find((course: Course) => course.id == id);
+    if (course) {
+      return course;
+    }
+    return this.courseNotFound;
   }
 }
 

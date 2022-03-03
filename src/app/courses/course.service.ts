@@ -18,16 +18,25 @@ export class CourseService {
   };
   constructor() {}
 
-  retriveAll(): Course[] {
+  retrieveAll(): Course[] {
     return COURSES;
   }
 
-  retriveById(id: number): Course {
+  retrieveById(id: number): Course {
     const course = COURSES.find((course: Course) => course.id == id);
     if (course) {
       return course;
     }
     return this.courseNotFound;
+  }
+
+  saveCourse(course: Course): void {
+    if (course.id) {
+      const index = COURSES.findIndex(
+        (courseItem: Course) => courseItem.id == course.id
+      );
+      COURSES[index] = course;
+    }
   }
 }
 

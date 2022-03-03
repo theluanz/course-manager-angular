@@ -14,12 +14,23 @@ export class CourseInfoComponent implements OnInit {
     private courseService: CourseService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {
-    const id = +activatedRoute.snapshot.paramMap.get('id')!;
+  ) {}
+
+  error404() {
+    this.router.navigateByUrl('404');
+  }
+
+  saveChanges() {
+    this.courseService.saveCourse(this.course);
+    this.router.navigateByUrl('404');
+  }
+
+  ngOnInit(): void {
+    const id = +this.activatedRoute.snapshot.paramMap.get('id')!;
 
     if (!Number.isNaN(id)) {
       console.log('entrou');
-      const getCourse: Course = this.courseService.retriveById(id!);
+      const getCourse: Course = this.courseService.retrieveById(id!);
       if (getCourse.id > -1) {
       }
       getCourse.id !== -1 ? (this.course = getCourse) : this.error404();
@@ -28,9 +39,4 @@ export class CourseInfoComponent implements OnInit {
       this.error404();
     }
   }
-
-  error404() {
-    this.router.navigateByUrl('404');
-  }
-  ngOnInit(): void {}
 }

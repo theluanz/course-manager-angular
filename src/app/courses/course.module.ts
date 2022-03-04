@@ -1,21 +1,17 @@
-import { Error404Component } from './../error404/error404.component';
+import { AppPipeModule } from './../shared/pipes/app-pipe.module';
+import { StarModule } from './../shared/components/star/star.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { StarComponent } from './../star/star.component';
-import { ReplacePipe } from './../pipe/replace.pipe';
 import { RouterModule } from '@angular/router';
 import { CourseInfoComponent } from './course-info/course-info.component';
 import { CourseListComponent } from './course-list/course-list.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    CourseListComponent,
-    CourseInfoComponent,
-    ReplacePipe,
-    StarComponent,
-  ],
+  declarations: [CourseListComponent, CourseInfoComponent],
   imports: [
+    AppPipeModule,
+    StarModule,
     FormsModule,
     BrowserModule,
     RouterModule.forChild([

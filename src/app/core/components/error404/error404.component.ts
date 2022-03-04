@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   templateUrl: './error404.component.html',
 })
-export class Error404Component implements OnInit {
+export class Error404Component {
   constructor() {}
-
-  ngOnInit(): void {}
 }

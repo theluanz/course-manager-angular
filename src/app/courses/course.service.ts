@@ -18,6 +18,10 @@ export class CourseService {
     return this.httpClient.get<Course>(`${this.courseUrl}/${id}`);
   }
 
+  deleteById(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.courseUrl}/${id}`);
+  }
+
   saveCourse(course: Course): Observable<Course> {
     if (course.id) {
       return this.httpClient.put<Course>(

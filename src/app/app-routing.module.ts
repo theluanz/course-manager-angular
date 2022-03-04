@@ -1,3 +1,4 @@
+import { CourseModule } from './courses/course.module';
 import { CourseInfoComponent } from './courses/course-info/course-info.component';
 import { Error404Component } from './error404/error404.component';
 import { NgModule } from '@angular/core';
@@ -7,14 +8,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: CourseListComponent,
+    redirectTo: 'courses',
+    pathMatch: 'full',
   },
   {
-    path: 'courses/info/:id',
-    component: CourseInfoComponent,
-  },
-  {
-    path: '**',
+    path: '404',
     component: Error404Component,
   },
 ];

@@ -1,3 +1,4 @@
+import { CourseModule } from './courses/course.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ReplacePipe } from './pipe/replace.pipe';
 import { StarComponent } from './star/star.component';
@@ -12,16 +13,8 @@ import { CourseInfoComponent } from './courses/course-info/course-info.component
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CourseListComponent,
-    StarComponent,
-    ReplacePipe,
-    NavBarComponent,
-    Error404Component,
-    CourseInfoComponent,
-  ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, NavBarComponent, Error404Component],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, CourseModule],
   providers: [],
   bootstrap: [AppComponent],
 })
